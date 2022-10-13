@@ -1,0 +1,8 @@
+ {% extends "base_template.html" %}{% block mail_subject %}
+<h5>Alert expiration</h5>{% endblock %} {% block mail_content %}
+
+<p>Your alert named {{ alert_name }} has expired as planned on {{ expiration_date }}.<br></p>
+<p>You can reactivate it if you want 👉&nbsp; <a class="settings" href="http://localhost:3000/alerts/">Alert settings</a><br></p>
+
+{% endblock %} {% block btn_link %}
+<a class="login text" href="http://localhost:3000/login/">Login to ForexMetrics</a> {% endblock %}

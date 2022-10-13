@@ -1,0 +1,173 @@
+.section_progression {
+  padding: 3em;
+  height: auto;
+}
+
+div.body_progression {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.container_progression {
+  height: 300px;
+  width: 700px;
+  top: 60px;
+  left: calc(50% - 300px);
+  display: flex;
+}
+
+.card_progression {
+  display: flex;
+  height: 380px;
+  width: 100%;
+  background-color: #17141d;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  /*   margin-left: -50px; */
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+}
+
+.card_progression:not(:first-child) {
+  margin-left: -0px;
+}
+
+.card_progression:hover {
+  transform: translateY(-30px);
+  transition: 0.4s ease-out;
+}
+
+.card_progression:hover~.card_progression {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+
+.card_progression .title {
+  color: white;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+.bar {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  height: 5px;
+  width: 80%;
+}
+
+.emptybar {
+  background-color: #2e3033;
+  width: 100%;
+  height: 100%;
+}
+
+.filledbar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 0px;
+  height: 100%;
+  background: rgb(0, 154, 217);
+  background: linear-gradient(90deg, rgba(0, 154, 217, 1) 0%, rgba(217, 147, 0, 1) 65%, rgba(255, 186, 0, 1) 100%);
+  transition: 0.6s ease-out;
+}
+
+.card_progression:hover .filledbar {
+  width: 120px;
+  transition: 0.4s ease-out;
+}
+
+
+.circle {
+  position: absolute;
+  top: 150px;
+  left: calc(50% - 60px);
+}
+
+.stroke {
+  stroke: white;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  transition: 0.6s ease-out;
+}
+
+svg {
+  fill: #17141d;
+  stroke-width: 2px;
+}
+
+.card_progression:hover .stroke {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
+}
+
+.centeredDiv{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.schoolImg{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+  position: static;
+
+}
+
+.image {
+  width: 600px;
+  height: 400px;
+  position: static;
+  margin-left: 400px;
+  margin-bottom: 20px;
+}
+.image2 {
+  width: 100px;
+  position: static;
+  margin-left: 300px;
+  margin-bottom: 20px;
+}
+
+.image4{
+  width: 750px;
+  height: 362;
+  position: static;
+  margin-left: 300px;
+  margin-bottom: 20px;
+}
+
+
+
+h1 {
+  text-align: center;
+}
+
+.centeredDiv p {
+  color: #111;
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 16px; 
+  line-height: 28px; margin: 0 0 48px;
+}
+
+.header-text {
+  text-align: center;
+  margin-top: 15px;
+  width: 75%;
+}
+
+.lessons {
+  color: white;
+  text-align:'center'
+}
+
+p{
+  font-size: large;
+}

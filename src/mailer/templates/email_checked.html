@@ -1,0 +1,12 @@
+{% extends "base_template.html" %} {% block mail_subject %}
+<h5>Hello {{ mail }}</h5>{% endblock %} {% block mail_content %}
+
+<p>👋&nbsp; Welcome to ForexMetrics. We are happy that you use our services.</p>
+<p>💱&nbsp; Trading strategies can be exhausting to build.<br> So instead of spending hours or days trying to make your own, try our plateform.</p>
+<p>📚&nbsp; ForexMetrics plateform adapts itself to you!<br> Start learning with us from scratch and become a forex veteran</p>
+<p>📬&nbsp; Schedule an email alert to be informed of any forex price change that interests you</p>
+
+{% endblock %} {% block btn_link %}
+<p>Your email has been checked feel free to use our services through ForexMetrics!</p>
+<a class="login text" href="http://localhost:3000/login/">Login to ForexMetrics</a> 
+{% endblock %}

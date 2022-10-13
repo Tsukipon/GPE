@@ -1,0 +1,77 @@
+/* 
+ .NavbarItems {
+    background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73, 63, 252,1) 100%);
+    height: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 1.5rem;
+    position: absolute;
+    opacity: 0.9;
+    z-index: 999;
+    display: none;
+}
+
+ .navbar-logo {
+    color: #ffff;
+    justify-self: start;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.fa-tools {
+    margin-left: 0.5rem;
+    position: relative;
+    font-size: 2rem;
+    left: 2px;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    justify-content: end;
+    z-index: 10;
+}
+
+.nav-links {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 0.5rem 2rem;   
+}
+
+.nav-links:hover {
+    background-color: rgb(143, 82, 204);
+    border-radius: 4px;
+    transition: all 1s ease-out;
+}
+.nav-links-mobile {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+
+}
+/*affichache quand l'écran est à mois de ecran full screnn*/
+
+.navbar_style {
+overflow: hidden;
+}
+
+@media screen and (max-width: 1240px) {
+    .D_NavbarHeading {
+        overflow-block: 50%;
+        width: 20px;    
+    }
+
+}
+
+@media screen and (min-width: 1240px) {
+    .D_NavbarHeading {
+        width: 400px;    
+    }
+}

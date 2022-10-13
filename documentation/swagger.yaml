@@ -1,0 +1,544 @@
+swagger: '2.0'
+info:
+  title: FMETRICS API
+  contact:
+    email: frxmetrics@gmail.com
+  version: v1
+host: localhost:8000
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /alert/:
+    get:
+      operationId: alert_list
+      description: |-
+        Manage access to a specific alert and his triggers for a specific user according to his token.
+            GET,DELETE:
+            example_json:
+                {
+                    "alert_name":string
+                }
+            POST,PUT:
+            example_json:
+                {
+
+            "alert_name": string,
+            "expire": "boolean",
+            "expiration_date": datetimefield,
+            "alerting_device": "enum_string",
+            "is_active": "boolean",
+            "description": string,
+            "currency_pair": "string",
+            "protection_level": "enum_string",
+            "triggers": [
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                },
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                }
+            ]
+        }
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - alert
+    post:
+      operationId: alert_create
+      description: |-
+        Manage access to a specific alert and his triggers for a specific user according to his token.
+            GET,DELETE:
+            example_json:
+                {
+                    "alert_name":string
+                }
+            POST,PUT:
+            example_json:
+                {
+
+            "alert_name": string,
+            "expire": "boolean",
+            "expiration_date": datetimefield,
+            "alerting_device": "enum_string",
+            "is_active": "boolean",
+            "description": string,
+            "currency_pair": "string",
+            "protection_level": "enum_string",
+            "triggers": [
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                },
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                }
+            ]
+        }
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - alert
+    put:
+      operationId: alert_update
+      description: |-
+        Manage access to a specific alert and his triggers for a specific user according to his token.
+            GET,DELETE:
+            example_json:
+                {
+                    "alert_name":string
+                }
+            POST,PUT:
+            example_json:
+                {
+
+            "alert_name": string,
+            "expire": "boolean",
+            "expiration_date": datetimefield,
+            "alerting_device": "enum_string",
+            "is_active": "boolean",
+            "description": string,
+            "currency_pair": "string",
+            "protection_level": "enum_string",
+            "triggers": [
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                },
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                }
+            ]
+        }
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - alert
+    delete:
+      operationId: alert_delete
+      description: |-
+        Manage access to a specific alert and his triggers for a specific user according to his token.
+            GET,DELETE:
+            example_json:
+                {
+                    "alert_name":string
+                }
+            POST,PUT:
+            example_json:
+                {
+
+            "alert_name": string,
+            "expire": "boolean",
+            "expiration_date": datetimefield,
+            "alerting_device": "enum_string",
+            "is_active": "boolean",
+            "description": string,
+            "currency_pair": "string",
+            "protection_level": "enum_string",
+            "triggers": [
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                },
+                {
+                    "trigger_type": "enum_string",
+                    "trigger_condition": "enum_string",
+                    "value": float,
+                    "is_active": boolean
+                }
+            ]
+        }
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - alert
+    parameters: []
+  /alerts/:
+    get:
+      operationId: alerts_list
+      description: Grant access to all alerts with his triggers for a specific user
+        according to his token.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - alerts
+    parameters: []
+  /alerts_followed/:
+    get:
+      operationId: alerts_followed_list
+      description: |-
+        Grant access to all alerts followed with their triggers or not
+        depending on the privacy settings on each alert.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - alerts_followed
+    parameters: []
+  /ask_reset_password/:
+    post:
+      operationId: ask_reset_password_create
+      description: |-
+        Send a mail front side with a link to the user in order to change his password
+        in case the user forgots his password (not logged).
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - ask_reset_password
+    parameters: []
+  /ask_secret/:
+    post:
+      operationId: ask_secret_create
+      description: |-
+        Allow a user to ask the secret of another one by using his pseudo.
+        The target must be different from the user who made the request and
+        not be blocked by him.
+            example_json:
+            {
+                "pseudo":string
+            }
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - ask_secret
+    parameters: []
+  /block_user/:
+    post:
+      operationId: block_user_create
+      description: |-
+        Road that blocks a user.The last one won't be able to see data from the user who asked to do so
+        or even follow him
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - block_user
+    parameters: []
+  /change_password/:
+    post:
+      operationId: change_password_create
+      description: Change the password of the user if he is logged and asks that to
+        the front in settings/profile page.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - change_password
+    parameters: []
+  /change_skill_level/:
+    put:
+      operationId: change_skill_level_update
+      description: Road supposed to be used by FMetrics to update the user skill
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - change_skill_level
+    parameters: []
+  /check_account/uuid={uuid}/:
+    get:
+      operationId: check_account_read
+      description: Verify an account once it has been created thanks to an unique
+        identifier saved in database
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - check_account
+    parameters:
+      - name: uuid
+        in: path
+        required: true
+        type: string
+  /follow/:
+    post:
+      operationId: follow_create
+      description: |-
+        Allow a use to follow another user after the last one shared his secret code thanks to
+        share_secret road.
+                    example_json:
+            {
+                "secret":string
+            }
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - follow
+    parameters: []
+  /get_followed/:
+    get:
+      operationId: get_followed_list
+      description: Show the users followed by the current user
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - get_followed
+    parameters: []
+  /get_follower_requests/:
+    get:
+      operationId: get_follower_requests_list
+      description: Show the users that requested your secret in order to follow you
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - get_follower_requests
+    parameters: []
+  /get_followers/:
+    get:
+      operationId: get_followers_list
+      description: Show the followers of the current user
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - get_followers
+    parameters: []
+  /login/:
+    post:
+      operationId: login_create
+      description: |-
+        Class called each time a user creates his own account and associate a token to him
+        inside the database.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AuthToken'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AuthToken'
+      tags:
+        - login
+    parameters: []
+  /logout/:
+    post:
+      operationId: logout_create
+      description: Allow a user to logout the application.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - logout
+    parameters: []
+  /refresh/:
+    post:
+      operationId: refresh_create
+      description: Class that handles the refresh of the token each time it is asked
+        through the api.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AuthToken'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AuthToken'
+      tags:
+        - refresh
+    parameters: []
+  /register/:
+    post:
+      operationId: register_create
+      description: Allow a user to create his account on the app.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - register
+    parameters: []
+  /reset_password/uuid={uuid}/:
+    get:
+      operationId: reset_password_read
+      description: |-
+        Redirect a user on the front-end after uuid-token verification if GET request
+        Change the password of the user once the form is filled front side and the uuid is still existing in database.
+        The user is not logged in this situation.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - reset_password
+    post:
+      operationId: reset_password_create
+      description: |-
+        Redirect a user on the front-end after uuid-token verification if GET request
+        Change the password of the user once the form is filled front side and the uuid is still existing in database.
+        The user is not logged in this situation.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - reset_password
+    parameters:
+      - name: uuid
+        in: path
+        required: true
+        type: string
+  /share_secret/:
+    post:
+      operationId: share_secret_create
+      description: |-
+        Allow the target to accept the following request from those who asked to do so.
+        Show the secret and the pseudo of the current user who is the target of the following request.
+            example_json:
+        {
+            "pseudo":string
+        }
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - share_secret
+    parameters: []
+  /unblock_user/:
+    delete:
+      operationId: unblock_user_delete
+      description: |-
+        Allow to unblock a blocked user.
+                example_json:
+        {
+            "pseudo":string
+        }
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - unblock_user
+    parameters: []
+  /update_user/:
+    put:
+      operationId: update_user_update
+      description: |-
+        Road that complete the inscription if the user didn't finished it.
+        The request HEADER must be set on multipart/form-data.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - update_user
+    parameters: []
+  /user/:
+    get:
+      operationId: user_list
+      description: |-
+        Allow user account manipulation by accessing to the data, modifying them or delete them.
+        Only a logged user with his token can manage his own account.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - user
+    delete:
+      operationId: user_delete
+      description: |-
+        Allow user account manipulation by accessing to the data, modifying them or delete them.
+        Only a logged user with his token can manage his own account.
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - user
+    parameters: []
+  /users/:
+    get:
+      operationId: users_list
+      description: |-
+        Give the data from the app users
+        except those from the user who made the request and those from the blocked users.
+        Additionnal data are given according to privacy setting in user models.
+        If privacy is public the secret code and skill values are given.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - users
+    parameters: []
+definitions:
+  AuthToken:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+      token:
+        title: Token
+        type: string
+        readOnly: true
+        minLength: 1

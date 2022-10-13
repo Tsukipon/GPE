@@ -1,0 +1,133 @@
+.card_user {
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 2rem 3rem 3rem;
+  /* position entre les cartes */
+  padding: 1, 5rem;
+  width: 350px;
+  min-height: 550px;
+  height: auto;
+  /* box-shadow: 0 0 28px 4px rgb(170, 163, 163); */
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s ease;
+  /* background-color: rgb(143, 139, 155); */
+  background: rgba(255, 255, 255, 0.774);
+}
+
+/* div.overlay_user_card {
+    background: #97595902;
+} */
+
+.card_user:hover {
+  transform: scale(1.1);
+}
+
+div.section_topSide {
+  /* background-color: black; */
+  width: 100%;
+  height: 10%;
+}
+
+div.section_centerSide {
+  /* background-color: red;     */
+  width: 100%;
+  height: 40%;
+}
+
+div.section_bottomSide {
+  /* background-color: rgb(64, 31, 87); */
+  margin-left: 2%;
+  width: 100%;
+  height: 50%;
+}
+
+div.background {
+  height: auto;
+  /* background-color: rgb(0, 0, 0); */
+  background: url("../../data/images/loginBack1.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.card_user_title {
+  color: white;
+  font-weight: 200;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.card_user_body {
+  margin-left: 30px;
+}
+
+div.card_user_img {
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.card_user_img div.img_user {
+  width: 40%;
+  height: 15vh;
+  margin-right: 30%;
+  margin-bottom: 4%;
+  background: url("../../data/images/people.png") center center no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+div.card_user_img div.img_private_user {
+  width: 40%;
+  height: 15vh;
+  margin-right: 30%;
+  margin-bottom: 4%;
+  background: url("../../data/images/spy.png") center center no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+div.button_card {
+  font-size: 25px;
+  margin-left: 60%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 40%;
+  height: 35px;
+  background: hsl(245, 24%, 42%);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 10px hsl(225, 8%, 28%);
+  border-radius: 0px;
+  font-weight: bold;
+  padding: 0px 30px;
+  letter-spacing: 1px;
+}
+
+div.bio_area {
+  margin-top: 4rem;
+  font-size: 20px;
+}
+
+/* ////////////////button follow */
+
+div.button-follow {
+  margin-left: 55%;
+  margin-top: 1%;
+  margin-bottom: 20px;
+  width: 40%;
+  height: auto;
+  background: hsl(276, 84%, 20%);
+  box-shadow: 0 10px 10px hsl(225, 8%, 28%);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #887878;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 40px;
+  letter-spacing: 2px;
+}
+
+div.location {
+  margin-top: 1rem;
+}

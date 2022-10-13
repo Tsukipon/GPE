@@ -1,0 +1,8 @@
+node_modules
+#build
+.gitignore
+.dockerignore
+yarn.lock
+dockerfile
+#nginx
+#certbot

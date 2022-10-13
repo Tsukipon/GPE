@@ -1,0 +1,62 @@
+
+@import "~normalize.css/normalize.css";
+
+// import these first because they're the base layer
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/datetime/lib/css/blueprint-datetime.css";
+
+.left {
+    align-items:flex-start;
+    text-align: left;
+
+}
+
+.center {
+    align-items: center;
+    text-align: center;
+}
+
+.top-margin {
+    margin-top: 50px;
+}
+
+.bp3-drawer {
+    background: #ffffff;
+    box-shadow: 0 0 0 1px rgb(16 22 26 / 10%), 0 4px 8px rgb(16 22 26 / 20%), 0 1px 1px 0 rgb(16 22 26 / 20%);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    float:left;
+    
+  }
+
+.react-grid-item.static.setting{
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+.react-grid-item.static.triggers{
+    background: rgb(214, 192, 235);
+    border: 2px solid black;    
+}
+.react-grid-item.static.triggers .trigger-content{
+    margin: 10px;
+}
+
+.static-content{
+    margin: 10px;
+}
+
+
+
+.react-grid-layout {
+    background: rgb(255, 255, 255);
+    margin-top: 10px;
+  }
+
+.react-grid-item.static.triggers:hover{
+    background: rgb(220, 183, 255);
+    border-radius: 10px;
+    border: 3px solid rgb(0, 0, 0);
+}

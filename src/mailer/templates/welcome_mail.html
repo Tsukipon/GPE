@@ -1,0 +1,11 @@
+{% extends "base_template.html" %} {% block mail_subject %}
+<h5>Welcoming {{ mail }}</h5>{% endblock %} {% block mail_content %}
+
+<p>👋&nbsp; Welcome to ForexMetrics. We are happy that you use our services.</p>
+<p>💱&nbsp; Trading strategies can be exhausting to build.<br> So instead of spending hours or days trying to make your own, try our plateform.</p>
+<p>📚&nbsp; ForexMetrics plateform adapts itself to you!<br> Start learning with us from scratch and become a forex veteran</p>
+<p>📬&nbsp; Schedule an email alert to be informed of any forex price change that interests you</p>
+
+{% endblock %} {% block btn_link %}
+<a class="verify text" href="http://127.0.0.1:8000/check_account/uuid={{ random_uuid_register }}/">Verify your account</a> </td>
+{% endblock %}

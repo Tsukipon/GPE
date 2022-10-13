@@ -1,0 +1,12 @@
+.idea/
+__pycache__/
+.vscode
+.idea
+.vscode
+venv
+Backend/ForexMetricsBackend/.dbdata
+Backend/shell_script.txt
+.docker_data
+.env
+logs
+deployment

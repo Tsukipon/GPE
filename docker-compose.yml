@@ -1,0 +1,172 @@
+version: "3"
+services:
+  logger:
+    image: fluent/fluentd:v1.15-1
+    ports:
+      - 24224:24224
+    container_name: logger
+    depends_on:
+      - backend
+      - mailer
+    volumes:
+      - ./logs/conf:/fluentd/etc
+      - ./logs/output:/fluentd/output
+      - ./logs/pos:/fluentd/pos
+      - ./src/backend/logs:/fluentd/backend/logs
+      - ./src/mailer/logs:/fluentd/mailer/logs
+
+  webserver:
+    build:
+      context: ./src/web
+    ports:
+      - "${FRONTEND_PORT}:80"
+      - "443:443"
+      # - 3000:3000
+    container_name: webserver
+    depends_on:
+      - backend
+      - mailer
+      - influx_connector
+    volumes:
+      #- ./src/web/build:/app/
+      #- ./src/web/:/app/
+      - ./src/web/build:/usr/share/nginx/html
+      - ./src/web/nginx:/etc/nginx/conf.d
+      - ./src/web/certbot:/var/www/certbot
+    environment:
+      - REACT_APP_BACKEND_PORT=${BACKEND_PORT}
+      - REACT_APP_INFLUX_PORT=${INFLUX_PORT}
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: cerbot
+    depends_on:
+      - webserver
+    volumes:
+      - ./src/web/certbot:/var/www/certbot
+
+  pricing_streamer:
+    build:
+      context: ./src/streamers
+    environment:
+      - OANDA_TOKEN=${OANDA_TOKEN}
+      - OANDA_ACCOUNT_ID=${OANDA_ACCOUNT_ID}
+      - INFLUX_CONNECTOR_PORT=${INFLUX_CONNECTOR_PORT}
+    ports:
+      - "${PRICING_STREAMER_PORT}:${PRICING_STREAMER_PORT}"
+    container_name: streamer
+    volumes:
+      - ./src/streamers:/app
+
+  influx_connector:
+    build:
+      context: ./src/connectors
+    environment:
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
+      - DOCKER_INFLUXDB_INIT_ORG=${DOCKER_INFLUXDB_INIT_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${DOCKER_INFLUXDB_INIT_BUCKET}
+      - DOCKER_INFLUXDB_INIT_USERNAME=${DOCKER_INFLUXDB_INIT_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${DOCKER_INFLUXDB_INIT_PASSWORD}
+      - INFLUX_CONNECTOR_PORT=${INFLUX_CONNECTOR_PORT}
+      - INFLUX_PORT=${INFLUX_PORT}
+    depends_on:
+      - pricing_streamer
+      - influx
+    ports:
+      - "${INFLUX_CONNECTOR_PORT}:${INFLUX_CONNECTOR_PORT}"
+    container_name: connector
+    volumes:
+      - ./src/connectors:/app
+
+  influx:
+    image: influxdb:latest
+    container_name: influxdb
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=${DOCKER_INFLUXDB_INIT_MODE}
+      - DOCKER_INFLUXDB_INIT_USERNAME=${DOCKER_INFLUXDB_INIT_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${DOCKER_INFLUXDB_INIT_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${DOCKER_INFLUXDB_INIT_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${DOCKER_INFLUXDB_INIT_BUCKET}
+    volumes:
+      - .docker_data/influxdb_data:/var/lib/influxdb2
+      - .docker_data/influxdb_config:/etc/influxdb2
+    ports:
+      - "${INFLUX_PORT}:${INFLUX_PORT}"
+
+  backend:
+    build: ./src/backend
+    container_name: backend
+    depends_on:
+      - db
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    environment:
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_NAME=${DB_NAME}
+      - DB_TEST_NAME=${DB_TEST_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=${DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - OANDA_TOKEN=${OANDA_TOKEN}
+      - OANDA_ACCOUNT_ID=${OANDA_ACCOUNT_ID}
+      - BACKEND_PORT=${BACKEND_PORT}
+      - FRONTEND_PORT=${FRONTEND_PORT}
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
+      - TOKEN_EXPIRATION_DAYS=${TOKEN_EXPIRATION_DAYS}
+      - MAILER_PORT=${MAILER_PORT}
+    volumes:
+      - ./src/backend:/app
+    # command: "sh faker.sh"
+
+  db:
+    image: mysql
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: db
+    volumes:
+      - .docker_data/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+
+  alert_checker:
+    build:
+      context: ./src/alert_checker
+    depends_on:
+      - backend
+    ports:
+      - "${ALERT_CHECKER_PORT}:${ALERT_CHECKER_PORT}"
+    container_name: alert-checker
+    environment:
+      - OANDA_TOKEN=${OANDA_TOKEN}
+      - OANDA_ACCOUNT_ID=${OANDA_ACCOUNT_ID}
+      - MAILER_PORT=${MAILER_PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - INFLUX_CONNECTOR_PORT=${INFLUX_CONNECTOR_PORT}
+    restart: on-failure
+    volumes:
+      - ./src/alert_checker:/app
+
+  mailer:
+    build:
+      context: ./src/mailer
+    depends_on:
+      - alert_checker
+    ports:
+      - "${MAILER_PORT}:${MAILER_PORT}"
+    container_name: mailer
+    environment:
+      - EMAIL_HOST=${EMAIL_HOST}
+      - MAILER_PORT=${MAILER_PORT}
+      - MJ_APIKEY_PUBLIC=${MJ_APIKEY_PUBLIC}
+      - MJ_APIKEY_PRIVATE=${MJ_APIKEY_PRIVATE}
+      - BACKEND_PORT=${BACKEND_PORT}
+      - FRONTEND_PORT=${FRONTEND_PORT}
+    volumes:
+      - ./src/mailer:/app

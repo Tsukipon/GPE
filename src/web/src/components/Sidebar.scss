@@ -1,0 +1,53 @@
+.bp3-drawer {
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgb(16 22 26 / 10%), 0 4px 8px rgb(16 22 26 / 20%), 0 1px 1px 0 rgb(16 22 26 / 20%);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  float:left;
+}
+
+.NavTop {
+  background: white;
+  position: absolute;
+  box-shadow: 0 0 0 1px rgb(16 22 26 / 10%), 0 4px 8px rgb(16 22 26 / 20%), 0 1px 1px 0 rgb(16 22 26 / 20%);
+  display: flex;
+  flex-direction: row;
+  right: 20px;
+  
+}
+.navbar-custom { 
+  background: linear-gradient(90deg, rgb(6, 4, 20) 0%, rgb(38, 38, 41) 100%);
+  color: white;
+  
+}
+
+#sidebar {
+  float:right;
+  display:none
+}
+
+div.bp3-drawer {
+position: relative;
+overflow : auto;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}

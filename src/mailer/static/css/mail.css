@@ -1,0 +1,114 @@
+    img {
+        border: none;
+        -ms-interpolation-mode: bicubic;
+        max-width: 100%;
+    }
+    
+    body {
+        background-color: #eaebed;
+        font-family: 'Poppins', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+        line-height: 1.4;
+        margin: 0;
+        padding: 0;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    table {
+        border-collapse: separate;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        min-width: 100%;
+        width: 100%;
+    }
+    
+    table td {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        vertical-align: top;
+    }
+    
+    .body {
+        background-color: #eaebed;
+        width: 100%;
+    }
+    
+    .content {
+        box-sizing: border-box;
+        display: block;
+        Margin: 0 auto;
+        max-width: 580px;
+        padding: 10px;
+    }
+    
+    .main {
+        background: #ffffff;
+        border-radius: 3px;
+        width: 100%;
+    }
+    
+    .header {
+        padding: 20px 0;
+    }
+    
+    .wrapper {
+        box-sizing: border-box;
+        padding: 20px;
+    }
+    
+    .content-block {
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    
+    .footer {
+        clear: both;
+        Margin-top: 10px;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .footer td,
+    .footer p,
+    .footer span,
+    .footer a {
+        color: #9a9ea6;
+        font-size: 12px;
+        text-align: center;
+    }
+    
+    .btn {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .btn>tbody>tr>td {
+        padding-bottom: 15px;
+    }
+    
+    .btn table {
+        min-width: auto;
+        width: auto;
+    }
+    
+    .btn a {
+        background-color: #ffffff;
+        border: solid 1px #ec0867;
+        border-radius: 5px;
+        color: #ec0867;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0;
+        padding: 12px 25px;
+        text-transform: capitalize;
+    }
+    
+    .btn-primary a {
+        background-color: #f77977;
+        border-color: #f77977;
+        color: #ffffff;
+    }

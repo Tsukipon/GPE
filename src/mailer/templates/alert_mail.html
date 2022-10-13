@@ -1,0 +1,12 @@
+{% extends "base_template.html" %}{% block mail_subject %}
+<h5>Alert triggered</h5>{% endblock %} {% block mail_content %}
+<br>
+<h4>Hey {{ user_address }}</h4>
+<p>Your alert named <b>{{ alert_name }}</b> has been triggered.<br></p>
+{% for data in trigger_data %}
+    <p>You wished to be informed about <b>{{ data[3] }}</b> rate.<br></p>
+    <p>The alert has been configured to respond to your <b>{{ data[2] }}</b> position {{ data[0] }} <i>{{ data[1] }}</i> <b>{{ data[4] }}</b>.<br></p>
+{% endfor %}
+{% endblock %} {% block btn_link %}
+<a class="login text" href="http://127.0.0.1:3000/alert">Check your alerts</a>
+ {% endblock %}

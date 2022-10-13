@@ -1,0 +1,108 @@
+div.img_profile {
+    /* display: none; */
+    width: 100%;
+    height: 100vh;
+    background: url('../../data/images/loginBack1.jpg') center center no-repeat;
+    background-size: 500px;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+div.body_profile {
+    display: grid;
+}
+
+div.container_profile {
+    display: flex;
+    background-color: #fff;
+    /* border-radius: 50px; */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    /* left: 15%; */
+    margin-left: 30%;
+    margin-top: 2%;
+    width: 40%;
+    height: 600px;
+    /* max-width: 50%; */
+    /* min-height: 50%; */
+}
+
+div.section_profile {
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+#top {
+    display: flex;
+    /* width: 100%;
+    height: 100%; */
+}
+.field_profile {
+    margin-top: 5%;
+    margin-right: 10%;
+    width: 100%;
+    /* padding: 0.5rem 1rem; */
+    border: 2px solid rgba(0, 0, 0);
+    /* font-size: 10px; */
+    transition: all 1s ease-out;
+    margin-bottom: 10%;
+}
+
+
+#center {
+    display: flex;
+    flex-direction: column;
+    /* background-color: blue; */
+    width: 50%;
+    margin-bottom: 5%;
+}
+
+button.save_btn {
+    width: 40%;
+    font-size: 1.1rem;
+    margin-right: 1%;
+}
+
+button.erase_btn {
+    width: 40%;
+    /* font-size: 1.1rem; */
+    /* background-color: red; */
+}
+
+
+/* 
+.filed:hover {
+    background-color: #fff;
+    border: 2px solid rgba(30, 85, 25, 0.47);
+}
+
+.area {
+    min-height: 150px;
+} */
+
+#bottom {
+    display: inline;
+    /* background-color: red; */
+}
+
+input.field_profile_password {
+    /* display: none; */
+    width: 40%;
+    /* padding: 0.5rem 1rem; */
+    border: 2px solid rgba(0, 0, 0);
+    font-size: 10px;
+    /* transition: margin-right 2s; */
+}
+
+.reset_password_btn {
+    width: 100%;
+    margin-left: 150%;
+    margin-top: -40%;
+}
+
+.back_btn {
+    margin-right: 5%;
+}

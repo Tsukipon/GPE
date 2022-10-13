@@ -1,0 +1,9 @@
+{% extends "base_template.html" %} {% block mail_subject %}
+<h5>Friend requests accepted</h5>{% endblock %} {% block mail_content %}
+<p>The user <b>{{ sender }}</b> has accepted your invitation.<br></p>
+<p>You can now follow him with his secret: <b>{{ secret }}</b> <br></p>
+Visit our community page and follow him!  
+👉&nbsp; <a class="settings" href="http://localhost:3000/Community/">The community</a><br></p>
+
+{% endblock %} {% block btn_link %}
+<a class="login text" href="http://localhost:3000/">ForexMetrics Home Page</a> {% endblock %}

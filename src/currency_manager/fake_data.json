@@ -1,0 +1,27 @@
+{
+    "asks": [
+        {
+            "liquidity": 10000000,
+            "price": "1.11704"
+        },
+        {
+            "liquidity": 10000000,
+            "price": "1.11706"
+        }
+    ],
+    "bids": [
+        {
+            "liquidity": 10000000,
+            "price": "1.11690"
+        },
+        {
+            "liquidity": 10000000,
+            "price": "1.11688"
+        }
+    ],
+    "closeoutAsk": "1.11708",
+    "closeoutBid": "1.11686",
+    "instrument": "EUR_USD",
+    "tradeable": "true",
+    "time": "2016-09-20T15:05:47.960449532Z"
+}

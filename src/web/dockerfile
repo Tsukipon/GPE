@@ -1,0 +1,25 @@
+FROM node:14.17.3 as builder
+
+# ==== BUILD =====
+WORKDIR /app
+COPY build /app/build
+# SEND VARIABLES TO NGINX
+ENV NODE_ENV=production REACT_APP_BACKEND_PORT=${BACKEND_PORT} REACT_APP_INFLUX_PORT=${INFLUX_PORT}
+
+# ==== PROXY =======
+FROM nginx:1.23.1-alpine as production
+# COPY COMPILED JAVASCRIPT TO NGINX HTML FOLDER
+# COPY --from=builder /app/build  /usr/share/nginx/html
+# ADD NINGX CONF TO DOCKER CONTAINER
+COPY nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
+# ==== RUN =======
+CMD ["nginx", "-g", "daemon off;"]
+
+
+## ==== RUN IN DEVELOPMENT =======
+
+# FROM node:14.17.3
+# WORKDIR /web/app
+# COPY . /web/app
+# RUN npm i
+# CMD [ "npm", "start" ]

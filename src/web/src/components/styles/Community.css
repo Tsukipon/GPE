@@ -1,0 +1,16 @@
+div.container_communaute {
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+input.search {
+  border-radius: 50px;
+  background-color: #ecf0f1;
+  max-width: 40%;
+  min-width: 30%;
+}
+
+.container_card_user {
+  display: flex;
+  flex-wrap: wrap;
+}
